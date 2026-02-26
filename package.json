@@ -1,24 +1,38 @@
 {
   "name": "lib-template",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "private": true,
   "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "type-check": "tsc --build",
-    "lint": "eslint .",
+    "lint": "oxlint --type-aware && eslint .",
+    "lint:fix": "oxlint --type-aware --fix && eslint --fix .",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "test:once": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@byscripts/eslint-config": "^0.6.0",
     "@types/node": "^24.0.0",
     "@vitest/coverage-v8": "4.0.18",
     "eslint": "^10.0.2",
+    "eslint-plugin-oxlint": "^1.50.0",
     "jiti": "2.6.1",
+    "oxfmt": "^0.35.0",
+    "oxlint": "^1.50.0",
+    "oxlint-tsgolint": "^0.15.0",
     "typescript": "~5.9.3",
     "unplugin-dts": "1.0.0-beta.6",
     "vite": "^8.0.0-beta.13",

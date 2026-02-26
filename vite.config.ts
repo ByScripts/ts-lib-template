@@ -1,10 +1,10 @@
-import { defineConfig } from "vite";
-import dts from "unplugin-dts/vite";
-
 import { resolve } from "node:path";
 
+import dts from "unplugin-dts/vite";
+import { defineConfig } from "vite";
+
 export default defineConfig({
-  plugins: [dts()],
+  plugins: [dts({ exclude: ["**/*.test.ts"] })],
   build: {
     sourcemap: true,
     lib: {
